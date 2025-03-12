@@ -967,11 +967,11 @@ const config = {
     type: Phaser.AUTO,
     parent: 'renderDiv',
     scale: {
-        mode: Phaser.Scale.FIT,
+        mode: Phaser.Scale.RESIZE, // Change to RESIZE mode
         autoCenter: Phaser.Scale.CENTER_BOTH,
     },
-    width: 800,
-    height: 600,
+    width: window.innerWidth, // Set width to window's inner width
+    height: window.innerHeight, // Set height to window's inner height
     physics: {
         default: 'arcade',
         arcade: {
@@ -984,3 +984,6 @@ const config = {
 };
 
 window.phaserGame = new Phaser.Game(config);
+window.addEventListener('resize', () => {
+    window.phaserGame.scale.resize(window.innerWidth, window.innerHeight);
+});
